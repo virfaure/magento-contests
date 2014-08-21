@@ -1,0 +1,86 @@
+<?php $contest = $this->getData("contest"); ?>
+
+<div id="etailers-contest">
+
+    <!-- title -->
+    <h1><?php echo $contest['contest_title']; ?></h1>
+
+    <!-- description -->
+    <?php if(!empty($contest['contest_description'])): ?>
+        <div class="description"><?php echo $contest['contest_description']; ?></div>   
+    <?php endif; ?>
+
+    <?php if(!$contest['contest_active']): ?>
+        <!-- Contest Inactive ! -->
+        <div class="contest-error">
+            <?php echo $this->__('Sorry, this contest is over ! Thanks to everyone who participated, our winners will be notified soon.'); ?>
+        </div>
+    <?php else: ?>
+        <div class="contest-form">
+            <form id="submitContest" method="post" action="<?php echo $this->getUrl('contest/index/participatecontest') ?>">
+                <p class="contest-step step1">
+                    <label class="required"><?php echo $this->__('Name'); ?> <em>*</em> : </label>
+                    <input type="text" id="contest_participant_name" name="contest_participant_name" value="" class="input-text required-entry" />
+                    <input type="hidden" id="contest_id" name="contest_id" value="<?php echo $contest['contest_id']; ?>"/>
+                    <input type="hidden" id="store_id" name="store_id" value="<?php echo Mage::app()->getStore()->getID(); ?>"/>
+                    <input type="hidden" id="contest_url" name="contest_url" value="<?php echo $contest['contest_url']?>.html" />
+                    <input type="hidden" id="contest_url_cms" name="contest_url_cms" value="<?php echo $contest['contest_url_cms']?>.html" />
+                </p>
+                <p class="contest-step step2">
+                    <label class="required"><?php echo $this->__('Email'); ?> <em>*</em> : </label>
+                    <input type="text" id="contest_participant_email" name="contest_participant_email" value="" class="input-text validate-email required-entry" />
+                </p>
+                <p class="contest-step step3">
+                    <span style="margin-top: 16px;"><?php echo $this->__('Share with your friends'); ?> </span>
+                    <span style="margin-left: 22px;">
+                        <script>
+                            var fbShare = {
+                                url: "<?php echo $this->getUrl($contest['contest_url'].".html"); ?>",
+                                size: "large",
+                                google_analytics: "true",
+                                title: ""
+                            }
+                        </script>
+                        <script src="http://widgets.fbshare.me/files/fbshare.js"></script>
+                    </span>
+                </p>
+                <p class="contest-step step4">
+                     <input type="checkbox" id="contest_accept" name="contest_accept" value="1" class="required-entry input-checkbox" />
+                    <?php echo $this->__('I suscribe to the newsletter and accept'); ?> <a href="#contest-legal" class="fancy-contest"><?php echo $this->__('the legal terms'); ?></a> <em>*</em>
+                </p>
+                <p class="required-fields"><?php echo $this->__('* Required Fields'); ?></p>
+                <p>
+                    <button type="submit" title="<?php echo $this->__('Participate'); ?>" class="button button-extend">
+                        <span>
+                            <span><?php echo $this->__('Participate'); ?></span>
+                        </span>
+                    </button>
+                </p>
+            </form>
+        </div>
+        <div class="contest-image"><?php if(!empty($contest['contest_image'])): ?><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . "contest/".$contest['contest_image']; ?>" alt="<?php echo $contest['contest_title']; ?>"  style="width:100%;" /><?php endif;?></div>
+        <div class="clear"></div>
+
+        <!-- FancyBox Content -->
+        <div style="display: none">
+            <div id="contest-legal" style="width:500px;"><?php echo $contest['contest_text_legal']; ?></div>
+        </div>
+
+        <script type="text/javascript">
+            //<![CDATA[
+                var contactForm = new VarienForm('submitContest', true);
+            //]]>
+            
+            // Start Fancybox
+            jQuery(document).ready(function() {
+                jQuery("a.fancy-contest").fancybox({
+                        'autoDimensions'    : false,
+                        'width'             : 550,
+                        'height'            : 450,
+                        'hideOnContentClick': true,
+                });
+            });
+    
+        </script>
+    <?php endif; ?>
+</div>

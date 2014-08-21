@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <contest_index_index>
+		<reference name="root">
+            <action method="setTemplate">
+              <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="head">
+			<action method="addCss"><stylesheet>css/etailers/contest/contest.css</stylesheet></action> 
+        </reference>
+        
+        <reference name="content">
+            <block type="contest/contest" name="contest" template="etailers/contest/contest.phtml" />
+        </reference>
+    </contest_index_index>
+    
+      <contest_index_view>
+		<reference name="root">
+            <action method="setTemplate">
+              <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="head">
+			<action method="addCss"><stylesheet>css/etailers/contest/contest.css</stylesheet></action> 
+        </reference>
+        
+        <reference name="content">
+            <block type="contest/contest" name="contest" template="etailers/contest/contest.phtml" />
+        </reference>
+    </contest_index_view>
+</layout> 

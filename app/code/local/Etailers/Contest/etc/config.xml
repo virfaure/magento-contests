@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   Etailers
+ * @package    Etailers_Contest
+ * @author     ModuleCreator
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <Etailers_Contest>
+            <version>0.1.0</version>
+        </Etailers_Contest>
+    </modules>
+    <frontend>
+		<translate>
+            <modules>
+                <Etailers_Contest>
+                    <files>
+                        <default>Etailers_Contest.csv</default>
+                    </files>
+                </Etailers_Contest>
+            </modules>
+        </translate>
+        <routers>
+            <contest>
+                <use>standard</use>
+                <args>
+                    <module>Etailers_Contest</module>
+                    <frontName>contest</frontName>
+                </args>
+            </contest>
+        </routers>
+        <layout>
+            <updates>
+                <contest>
+                    <file>contest.xml</file>
+                </contest>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<contest>
+				<use>admin</use>
+				<args>
+					<module>Etailers_Contest</module>
+					<frontName>contest</frontName>
+				</args>
+			</contest>
+        </routers>
+    </admin>
+    <adminhtml>
+		<translate>
+            <modules>
+                <Etailers_Contest>
+                    <files>
+                        <default>Etailers_Contest.csv</default>
+                    </files>
+                </Etailers_Contest>
+            </modules>
+        </translate>
+        
+		<menu>
+            <utilities_etailers translate="title" module="contest">
+                <title>Utilities ET</title>
+                <sort_order>100</sort_order>
+                <children>
+                    <contest translate="title" module="contest">
+                        <title>Manage Contests</title>
+                        <action>contest/adminhtml_contest</action>
+                        <sort_order>2</sort_order>
+                    </contest>
+                    <participant translate="title" module="contest">
+                        <title>View Contest Participants</title>
+                        <action>contest/adminhtml_participant</action>
+                        <sort_order>3</sort_order>
+                    </participant>
+                </children>
+            </utilities_etailers>
+        </menu>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<utilities_etailers translate="title" module="contest">
+							<title>Utilities ET</title>
+							<sort_order>30</sort_order>
+							<children>
+								<contest translate="title">
+									<title>Manage Contests</title> 
+								</contest>
+								<participant translate="title">
+									<title>View Participants</title> 
+								</participant>
+							</children>
+						</utilities_etailers>
+						
+						<system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <etailers_contest>
+                                            <title>Store Hello World Module Section</title>
+                                        </etailers_contest>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                        
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<contest>
+					<file>contest.xml</file>
+				</contest>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <contest>
+                <class>Etailers_Contest_Model</class>
+                <resourceModel>contest_mysql4</resourceModel>
+            </contest>
+            <contest_mysql4>
+                <class>Etailers_Contest_Model_Mysql4</class>
+                <entities>
+                    <contest>
+                        <table>contest</table>
+                    </contest>
+                     <contest_store>
+                        <table>contest_store</table>
+                    </contest_store>
+                    <contest_participant>
+                        <table>contest_participant</table>
+                    </contest_participant>
+                </entities>
+            </contest_mysql4>
+        </models>
+        <resources>
+            <contest_setup>
+                <setup>
+                    <module>Etailers_Contest</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </contest_setup>
+            <contest_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </contest_write>
+            <contest_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </contest_read>
+        </resources>
+        <blocks>
+            <contest>
+                <class>Etailers_Contest_Block</class>
+            </contest>
+            
+            <adminhtml>
+                <rewrite>
+                    <newsletter_subscriber_grid>Etailers_Contest_Block_Adminhtml_Newsletter_Subscriber_Grid</newsletter_subscriber_grid>
+                </rewrite>
+            </adminhtml>
+ 
+        </blocks>
+        <helpers>
+            <contest>
+                <class>Etailers_Contest_Helper</class>
+            </contest>
+        </helpers>
+        <template>
+            <email>
+               <contest_sent_participant_result module="contest">
+                   <label>Etailers_Contest_Email</label>
+                   <file>etailers_contest_email_participant.html</file>
+                   <type>html</type>
+               </contest_sent_participant_result>
+            </email>
+        </template>
+    </global>
+    
+    <default>
+        <etailers_contest>
+            <etailers_contest_group>
+                <custom_template>contest_sent_participant_result</custom_template>
+            </etailers_contest_group>
+        </etailers_contest>
+	</default>
+</config>

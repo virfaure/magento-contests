@@ -1,0 +1,61 @@
+/*
+ * Contest CSS
+ *
+ * Copyright (c) 2013 Etailers 
+ *
+ */
+
+#etailers-contest{
+	margin-bottom:50px;
+}
+
+#etailers-contest .description{
+	padding:20px 10px;
+}
+
+.contest-info, .contest-success, .contest-warning, .contest-error, .contest-validation {
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:15px 10px 15px 10px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+}
+.contest-info {
+    color: #00529B;
+    background-color: #BDE5F8;
+    background-image: url('info.png');
+}
+.contest-success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    background-image:url('success.png');
+}
+.contest-warning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+    background-image: url('warning.png');
+}
+.contest-error {
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('error.png');
+}
+
+p.contest-step { clear:both; background-repeat:no-repeat; color:#404040; font-size:14px; font-weight:bold; height:50px; padding-left:40px; padding-top:7px; }
+#etailers-contest p.step1 { background-image:url("../../../images/etailers/contest/step1.png"); }
+#etailers-contest p.step2 { background-image:url("../../../images/etailers/contest/step2.png"); }
+#etailers-contest p.step3 { background-image:url("../../../images/etailers/contest/step3.png"); background-position: left 17px;}
+#etailers-contest p.step4 { background-image:url("../../../images/etailers/contest/step4.png"); }
+
+p.contest-step label{width: 200px; display: block; float: left;}
+p.contest-step input.input-text{float: left; width: 250px;}
+p.contest-step input.input-checkbox{margin-right:5px;}
+#etailers-contest button.btn-contest{margin-top:10px; margin-bottom:20px; }
+#etailers-contest button.btn-contest span { font:bold 14px/21px Arial; }
+#etailers-contest button.btn-contest span span { padding:0 14px 0 6px; }
+
+#etailers-contest p.step3 span{ float:left; display:block; }
+#etailers-contest .contest-form{ width:55%; float:left;}
+#etailers-contest .contest-image{ width:35%;  float:right;}
+#etailers-contest em{color:#ce0000; font-size:12px;}
+#etailers-contest .required-fields{color:#ce0000; font-size:10px; text-align:right; }

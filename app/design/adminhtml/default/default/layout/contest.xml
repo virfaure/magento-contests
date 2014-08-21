@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <contest_adminhtml_contest_index>
+        <reference name="content">
+            <block type="contest/adminhtml_contest" name="contest" />
+        </reference>
+    </contest_adminhtml_contest_index>
+    
+    <contest_adminhtml_participant_index>
+        <reference name="content">
+            <block type="contest/adminhtml_participant" name="participant" />
+        </reference>
+    </contest_adminhtml_participant_index>
+    
+</layout>
